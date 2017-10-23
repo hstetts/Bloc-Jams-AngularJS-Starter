@@ -30,13 +30,40 @@
          currentSong = song;
     };
 
+/**
+* @function playSong
+* @desc Plays audio file currentBuzzObject and sets playing property of the song object to true
+* @param {Object} song
+*/
+
+    var playSong = function(song) {
+      currentBuzzObject.play();
+      song.playing= true;
+    };
+
+/**
+* @method songPlayer.play
+* @desc if the current song is not the same as the song object, set song to the song object
+* and play the song object. Otherwise, if the current song is the same and it's paused, play it.
+* @param {Object} song
+*/
+
     SongPlayer.play = function(song) {
       if (currentSong !== song) {
       setSong(song);
       currentBuzzObject.play();
       song.playing = true;
+    } else if (currentSong === song) {
+      if (currentBuzzObject.isPaused()) {
+             currentBuzzObject.play();
+         }
     }
   };
+/**
+* @method songPlayer.pause
+* @desc Pause currentBuzzObject and set song playing to false
+* @param {Object} song
+*/
 
   SongPlayer.pause = function(song) {
     currentBuzzObject.pause();
