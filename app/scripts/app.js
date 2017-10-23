@@ -5,6 +5,7 @@
                 enabled: true,
                 requireBase: false
             });
+
         $stateProvider
             .state('landing', {
                 url: '/',
@@ -13,7 +14,7 @@
             })
             .state('album', {
                 url: '/album',
-                controller: 'AlbumCtrl.js as album',
+                controller: 'AlbumCtrl as album',
                 templateUrl: '/templates/album.html'
             })
             .state('collection', {

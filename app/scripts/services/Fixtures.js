@@ -43,7 +43,6 @@
        }
        return this.collections;
      }
-
     return Fixtures;
   }
 
