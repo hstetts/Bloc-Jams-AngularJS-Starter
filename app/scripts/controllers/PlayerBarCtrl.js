@@ -6,5 +6,5 @@
 
   angular
     .module('blocJams')
-    .controller('PlayBarCtrl', ['Fixtures', 'SongPlayer', PlayerBarCtrl]);
+    .controller('PlayerBarCtrl', ['Fixtures', 'SongPlayer', PlayerBarCtrl]);
  })();
