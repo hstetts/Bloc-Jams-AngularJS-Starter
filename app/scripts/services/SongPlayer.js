@@ -39,7 +39,7 @@
           });
 
             SongPlayer.currentSong = song;
-        };
+          };
 
 /**
 * @function playSong
@@ -63,35 +63,25 @@
             song.playing = null;
         };
 
-/**
-* @function getSongIndex
-* @desc Returns the index of the song parameter
-* @param {Object} song
-*/
+        /**
+        * @desc Active song object from list of songs
+        * @type {Object}
+        */
+                SongPlayer.currentSong = null;
 
-        var getSongIndex = function(song) {
-          return currentAlbum.songs.indexOf(song);
-        };
+        /**
+        * @desc Current playback time (in seconds) of currently playing song
+        * @type {Number}
+        */
+                SongPlayer.currentTime = null;
 
+        /**
+        * @desc volume of song.
+        * @type {Number}
+        */
 
-/**
-* @desc Active song object from list of songs
-* @type {Object}
-*/
-        SongPlayer.currentSong = null;
+                SongPlayer.volume = 60;
 
-/**
-* @desc Current playback time (in seconds) of currently playing song
-* @type {Number}
-*/
-        SongPlayer.currentTime = null;
-
-/**
-* @desc Max volume of song.
-* @type {Number}
-*/
-
-        SongPlayer.volume = 100;
 
 /**
 * @function play
@@ -103,7 +93,7 @@
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
-            } else if (SongPlayer.currentSong === song) {
+            } else if (SongPlayer.currentSong === song){
                 if (currentBuzzObject.isPaused()){
                     playSong(song);
                 }
@@ -156,8 +146,6 @@
         };
       };
 
-      return SongPlayer;
-    };
 
 /**
 * @function setCurrentTime
@@ -182,7 +170,10 @@
             }
             SongPlayer.volume = volume;
           }
-          
+
+          return SongPlayer;
+        };
+
 
 
     angular

@@ -7,6 +7,13 @@
 */
 
 function seekBar($document) {
+
+  /**
+  * @function calculatePercent
+  * @desc Calculates the horizontal percent along the seek bar where the event passed from the view occurred.
+  * @param {Object} event
+  */
+
     var calculatePercent = function(seekBar, event) {
       var offsetX = event.pageX - seekBar.offset().left;
       var seekBarWidth = seekBar.width();
@@ -37,10 +44,15 @@ function seekBar($document) {
           scope.max = newValue;
         });
 
+/**
+* @function percentString
+* @desc Function calculates a percent based on the value and maximum value of seek bar
+*/
+
         var percentString = function () {
           var value = scope.value;
           var max = scope.max;
-          var percent = value / max * 100;
+          var percent = value/max * 100;
           return percent + "%";
         };
 
@@ -60,26 +72,26 @@ function seekBar($document) {
 
         scope.trackThumb = function() {
           $document.bind('mousemove.thumb', function(event) {
-          var percent = calculatePercent(seekBar, event);
-          scope.$apply(function() {
+            var percent = calculatePercent(seekBar, event);
+            scope.$apply(function() {
             scope.value = percent * scope.max;
             notifyOnChange(scope.value);
          });
        });
+
+       $document.bind('mouseup.thumb', function() {
+          $document.unbind('mousemove.thumb');
+          $document.unbind('mouseup.thumb');
+       });
+     };
 
         var notifyOnChange = function(newValue) {
           if (typeof scope.onChange === 'function') {
           scope.onChange({value: newValue});
         }
       };
-
-        $document.bind('mouseup.thumb', function() {
-           $document.unbind('mousemove.thumb');
-           $document.unbind('mouseup.thumb');
-        });
-      };
     }
-  };
+  }
 }
 
   angular
